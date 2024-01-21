@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import static androidx.constraintlayout.widget.Constraints.TAG;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.EditText;
@@ -40,7 +41,7 @@ public class ChatActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.chat_recycler_view);
 
         backButton.setOnClickListener((v -> {
-//            navigateToSearchUser();
+            navigateToSearchUser();
 
             onBackPressed();
         }));
@@ -50,7 +51,19 @@ public class ChatActivity extends AppCompatActivity {
 
     private void navigateToSearchUser() {
         navigateToSearchUser();
+
+
     }
+
+//    private void navigateToSearchUser() {
+//        // Start the search_user activity
+//        Intent intent = new Intent(ChatActivity.this, search_user.class);
+//        startActivity(intent);
+//
+//        // Finish the current ChatActivity to remove it from the back stack
+//        finish();
+//    }
+
 
 
 }

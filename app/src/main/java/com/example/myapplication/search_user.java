@@ -49,6 +49,7 @@ search_user_recycler_adapter adapter;
             searchInput.setError("Invalid Username");
             return;
         }
+
         setUpSearchRecyclerView(searchTerm);
     }));
     }
