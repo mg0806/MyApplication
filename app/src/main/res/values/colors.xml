@@ -7,6 +7,9 @@
 
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="chat_color_sender">#1E88E5</color>
+    <color name="chat_color_receiver">#7CB942</color>
+
 </resources>
 
 

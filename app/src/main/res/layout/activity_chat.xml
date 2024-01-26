@@ -73,6 +73,8 @@
             android:background="@drawable/round_corner"
             android:elevation="4dp"
             android:hint="Type Here"
+            android:inputType="textLongMessage"
+            android:lines="15"
             android:padding="10dp" />
 
         <ImageButton

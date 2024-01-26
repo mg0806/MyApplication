@@ -5,11 +5,12 @@ import static androidx.constraintlayout.widget.Constraints.TAG;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.example.myapplication.adapter.search_user_recycler_adapter;
 import com.example.myapplication.model.UserModel;
@@ -36,22 +37,36 @@ search_user_recycler_adapter adapter;
         backButton = findViewById(R.id.back_btn);
         recyclerView = findViewById(R.id.search_user_recycler_view);
 
+
+
         searchInput.requestFocus();
 
-        backButton.setOnClickListener((view -> {
 
-            Log.i(TAG, "onCreate: back button is pressed in search user ");
+
+        backButton.setOnClickListener((view -> {
             onBackPressed();
         }));
     searchButton.setOnClickListener((view -> {
+
+
+        String savedSearchTerm = getSearchTermFromPreferences();
+//        Toast.makeText(search_user.this, "Stored Search Term: " + savedSearchTerm, Toast.LENGTH_SHORT).show();
         String searchTerm = searchInput.getText().toString();
+
         if (searchTerm.isEmpty()||searchTerm.length()<3){
+
             searchInput.setError("Invalid Username");
-            return;
         }
+
+
+
 
         setUpSearchRecyclerView(searchTerm);
     }));
+    }
+    private String getSearchTermFromPreferences() {
+        SharedPreferences preferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
+        return preferences.getString("searchTerm", "");
     }
 
     void setUpSearchRecyclerView(String searchTerm){
@@ -87,7 +102,7 @@ search_user_recycler_adapter adapter;
     protected void onResume() {
         super.onResume();
         if (adapter!=null){
-            adapter.startListening();
+            adapter.notifyDataSetChanged();
         }
     }
 }
