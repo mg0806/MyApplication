@@ -71,7 +71,8 @@ search_user_recycler_adapter adapter;
 
     void setUpSearchRecyclerView(String searchTerm){
 //Query to search users from firestore database and show them on recyclerView
-        Query query = FirebaseUtil.allUserCollectionRefernce().whereGreaterThanOrEqualTo("username",searchTerm);
+        Query query = FirebaseUtil.allUserCollectionRefernce().whereGreaterThanOrEqualTo("username",searchTerm)
+                .whereLessThanOrEqualTo("username",searchTerm);
 
         FirestoreRecyclerOptions<UserModel> options = new FirestoreRecyclerOptions.Builder<UserModel>()
                 .setQuery(query, UserModel.class).build();
